@@ -1,0 +1,6 @@
+{
+  "name": "ApolloCraft Security",
+  "description": "Sistema completo de segurança, verificação de jogadores, anti-VPN, anti-alt e painel administrativo para servidor Minecraft Bedrock com Next.js, Vercel e Supabase.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
