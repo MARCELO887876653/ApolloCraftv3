@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import {
   LayoutDashboard,
   Users,
@@ -122,14 +123,14 @@ export function AdminSidebar({
 
       {/* Footer Actions */}
       <div className="p-3 border-t border-white/10 space-y-2">
-        <a
+        <Link
           href="/"
           onClick={(e) => handleItemClick(e, '/')}
           className="flex items-center justify-between w-full px-3 py-2 rounded-lg text-xs text-slate-400 hover:text-white hover:bg-white/[0.04] transition-colors"
         >
           <span>Acessar Site Público</span>
           <ExternalLink className="w-3.5 h-3.5 opacity-60" />
-        </a>
+        </Link>
 
         <button
           onClick={onLogout}

@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { Shield, Heart } from 'lucide-react';
 
 interface FooterProps {
@@ -44,22 +45,22 @@ export function Footer({ onNavigate }: FooterProps) {
             </h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <a
+                <Link
                   href="/"
                   onClick={(e) => handleClick(e, '/')}
                   className="hover:text-purple-400 transition-colors"
                 >
                   Status do Servidor
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/verificar"
                   onClick={(e) => handleClick(e, '/verificar')}
                   className="hover:text-purple-400 transition-colors"
                 >
                   Verificar Conta Bedrock
-                </a>
+                </Link>
               </li>
               <li>
                 <a
@@ -81,31 +82,31 @@ export function Footer({ onNavigate }: FooterProps) {
             </h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <a
+                <Link
                   href="/termos"
                   onClick={(e) => handleClick(e, '/termos')}
                   className="hover:text-purple-400 transition-colors"
                 >
                   Termos de Serviço
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/privacidade"
                   onClick={(e) => handleClick(e, '/privacidade')}
                   className="hover:text-purple-400 transition-colors"
                 >
                   Política de Privacidade
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/admin/login"
                   onClick={(e) => handleClick(e, '/admin/login')}
                   className="hover:text-purple-400 transition-colors"
                 >
                   Acesso Administrativo
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

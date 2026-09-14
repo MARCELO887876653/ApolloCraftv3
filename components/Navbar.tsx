@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { Shield, Sparkles, Server, CheckCircle2, Lock, ExternalLink } from 'lucide-react';
 
 interface NavbarProps {
@@ -18,7 +19,7 @@ export function Navbar({ currentPath = '/', onNavigate }: NavbarProps) {
     <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-[#0B0F19]/80 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Brand Logo */}
-        <a
+        <Link
           href="/"
           onClick={(e) => handleClick(e, '/')}
           className="flex items-center gap-3 group transition-transform hover:scale-102"
@@ -37,11 +38,11 @@ export function Navbar({ currentPath = '/', onNavigate }: NavbarProps) {
             </span>
             <span className="text-[11px] text-slate-400 font-mono">play.apollocraft.online:19132</span>
           </div>
-        </a>
+        </Link>
 
         {/* Public Navigation */}
         <nav className="hidden md:flex items-center gap-6">
-          <a
+          <Link
             href="/"
             onClick={(e) => handleClick(e, '/')}
             className={`text-sm font-medium transition-colors ${
@@ -49,8 +50,8 @@ export function Navbar({ currentPath = '/', onNavigate }: NavbarProps) {
             }`}
           >
             Início
-          </a>
-          <a
+          </Link>
+          <Link
             href="/verificar"
             onClick={(e) => handleClick(e, '/verificar')}
             className={`text-sm font-medium flex items-center gap-1.5 transition-colors ${
@@ -59,7 +60,7 @@ export function Navbar({ currentPath = '/', onNavigate }: NavbarProps) {
           >
             <CheckCircle2 className="w-4 h-4 text-sky-400" />
             Verificação
-          </a>
+          </Link>
           <a
             href="https://discord.gg/apollocraft"
             target="_blank"
@@ -73,21 +74,21 @@ export function Navbar({ currentPath = '/', onNavigate }: NavbarProps) {
 
         {/* Admin Login Button */}
         <div className="flex items-center gap-3">
-          <a
+          <Link
             href="/verificar"
             onClick={(e) => handleClick(e, '/verificar')}
             className="hidden sm:inline-flex items-center justify-center px-4 py-2 rounded-lg text-sm font-medium text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 shadow-md shadow-purple-950/50 transition-all"
           >
             Verificar Conta
-          </a>
-          <a
+          </Link>
+          <Link
             href="/admin/login"
             onClick={(e) => handleClick(e, '/admin/login')}
             className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white bg-slate-800/80 hover:bg-slate-700/80 border border-white/10 transition-colors"
           >
             <Lock className="w-3.5 h-3.5 text-purple-400" />
             Admin
-          </a>
+          </Link>
         </div>
       </div>
     </header>
