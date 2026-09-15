@@ -33,7 +33,8 @@ export function sha256(content: string): string {
  * Hashes an IP address using SHA-256 with an optional salt for privacy
  */
 export function hashIp(ip: string): string {
-  const salt = process.env.SUPABASE_SERVICE_ROLE_KEY?.slice(0, 16) || 'apollo_ip_salt';
+  const secretKey = process.env.SUPABASE_SECRET_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY;
+  const salt = secretKey?.slice(0, 16) || 'apollo_ip_salt';
   return createHash('sha256').update(`${salt}:${ip}`).digest('hex');
 }
 

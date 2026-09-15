@@ -1,8 +1,9 @@
 import { createBrowserClient } from '@supabase/ssr';
+import { getPublicSupabaseUrl, getPublicSupabaseAnonKey } from './env';
 
 export function createClient() {
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  const supabaseUrl = getPublicSupabaseUrl();
+  const supabaseAnonKey = getPublicSupabaseAnonKey();
 
   if (!supabaseUrl || !supabaseAnonKey) {
     // Graceful fallback for build-time evaluation or unconfigured environment

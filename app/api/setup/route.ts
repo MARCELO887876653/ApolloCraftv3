@@ -17,11 +17,22 @@ export async function GET() {
 
   try {
     // Check if any admin user with role OWNER exists
-    const { data: ownerRole } = await supabase
+    const { data: ownerRole, error: roleError } = await supabase
       .from('admin_roles')
       .select('id')
       .eq('name', 'OWNER')
-      .single();
+      .maybeSingle();
+
+    if (roleError) {
+      return NextResponse.json({
+        configured: false,
+        supabaseConnected: true,
+        ownerExists: false,
+        tablesPending: true,
+        message: 'Conectado ao Supabase com sucesso. Tabelas ou migrations pendentes no banco de dados.',
+        details: roleError.message,
+      });
+    }
 
     if (!ownerRole) {
       return NextResponse.json({
@@ -37,17 +48,27 @@ export async function GET() {
       .eq('role_id', ownerRole.id);
 
     if (error) {
-      return NextResponse.json({ error: error.message }, { status: 500 });
+      return NextResponse.json({
+        configured: false,
+        supabaseConnected: true,
+        ownerExists: false,
+        message: 'Conectado ao Supabase, mas erro ao consultar admin_users.',
+        details: error.message,
+      });
     }
 
     const ownerExists = (count || 0) > 0;
     return NextResponse.json({
-      configured: true,
+      configured: ownerExists,
       supabaseConnected: true,
       ownerExists,
     });
   } catch (err: any) {
-    return NextResponse.json({ error: err.message || 'Erro interno' }, { status: 500 });
+    return NextResponse.json({
+      configured: false,
+      supabaseConnected: true,
+      error: err.message || 'Erro interno',
+    }, { status: 500 });
   }
 }
 
